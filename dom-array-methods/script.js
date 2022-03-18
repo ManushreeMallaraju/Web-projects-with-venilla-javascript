@@ -28,14 +28,23 @@ async function getRandomUser() {
     addData(newUser);
 }
 
+// Double everyones money
+function doubleMoney() {
+    data = data.map((user) => {
+        return { ...user, money: user.money * 2 } //copy everything in the user object here..
+    })
+
+    updateDOM(); //for every changes done and to be reflected in UI
+}
+
 // Add new obj to data array
 function addData(userObject) {
     data.push(userObject);
-    updateDom();
+    updateDOM();
 }
 
 // Update DOM
-function updateDom(providedData = data) { // ES6 default value for parameter : if nothing passed, user data array
+function updateDOM(providedData = data) { // ES6 default value for parameter : if nothing passed, user data array
 
     //Clear main div
     main.innerHTML = '<h2><strong>Person</strong> Wealth</h2>'
@@ -55,3 +64,15 @@ function formatMoney(number) {
 
 // Event listeners
 addUserBtn.addEventListener('click', getRandomUser);
+
+console.log(data);
+doubleBtn.addEventListener('click', doubleMoney);
+
+// Array.map tip
+// const array1 = [1, 4, 9, 16];
+
+// const arr2 = array1.map((element) => {
+// 	return `Number: ${element}`;
+
+// })
+// console.log(arr2);
