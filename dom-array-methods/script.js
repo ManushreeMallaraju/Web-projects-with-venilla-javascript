@@ -31,5 +31,27 @@ async function getRandomUser() {
 // Add new obj to data array
 function addData(userObject) {
     data.push(userObject);
-    console.log(data);
+    updateDom();
 }
+
+// Update DOM
+function updateDom(providedData = data) { // ES6 default value for parameter : if nothing passed, user data array
+
+    //Clear main div
+    main.innerHTML = '<h2><strong>Person</strong> Wealth</h2>'
+
+    providedData.forEach(item => {
+        const element = document.createElement('div');
+        element.classList.add('person');
+        element.innerHTML = `<strong>${item.name}</strong>${formatMoney(item.money)}`;
+        main.appendChild(element);
+    });
+}
+
+// Format number as money - https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-string
+function formatMoney(number) {
+    return '$' + number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+}
+
+// Event listeners
+addUserBtn.addEventListener('click', getRandomUser);
