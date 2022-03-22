@@ -33,7 +33,6 @@ function doubleMoney() {
     data = data.map((user) => {
         return { ...user, money: user.money * 2 } //copy everything in the user object here..
     })
-
     updateDOM(); //for every changes done and to be reflected in UI
 }
 
@@ -42,6 +41,14 @@ function addData(userObject) {
     data.push(userObject);
     updateDOM();
 }
+
+// Sort users by richest... 
+function sortByRichest() {
+    data.sort((a, b) => b.money - a.money);
+
+    updateDOM();
+}
+
 
 // Update DOM
 function updateDOM(providedData = data) { // ES6 default value for parameter : if nothing passed, user data array
@@ -65,14 +72,15 @@ function formatMoney(number) {
 // Event listeners
 addUserBtn.addEventListener('click', getRandomUser);
 
-console.log(data);
 doubleBtn.addEventListener('click', doubleMoney);
+
+sortBtn.addEventListener('click', sortByRichest);
+
 
 // Array.map tip
 // const array1 = [1, 4, 9, 16];
 
-// const arr2 = array1.map((element) => {
-// 	return `Number: ${element}`;
+// const arr2 = array1.map(element =>  `Number: ${element}`);
 
 // })
 // console.log(arr2);
