@@ -49,6 +49,12 @@ function sortByRichest() {
     updateDOM();
 }
 
+// Filter only millionaires
+function showOnlyMillionaires() {
+    data = data.filter(element => element.money > 1000000);
+
+    updateDOM();
+}
 
 // Update DOM
 function updateDOM(providedData = data) { // ES6 default value for parameter : if nothing passed, user data array
@@ -76,6 +82,8 @@ doubleBtn.addEventListener('click', doubleMoney);
 
 sortBtn.addEventListener('click', sortByRichest);
 
+// console.log(data);
+showMillionairesBtn.addEventListener('click', showOnlyMillionaires);
 
 // Array.map tip
 // const array1 = [1, 4, 9, 16];
