@@ -56,6 +56,19 @@ function showOnlyMillionaires() {
     updateDOM();
 }
 
+// Reduce by totalWealth
+function calculateWealth() {
+    const wealth = data.reduce((acc, current) => {
+
+        return acc = acc + current.money;
+
+    }, 0)
+    console.log(formatMoney(wealth));
+    const wealthElement = document.createElement('div');
+    wealthElement.innerHTML = `<h3>Total Wealth: <strong>${formatMoney(wealth)}</strong></h3>`
+    main.appendChild(wealthElement);
+}
+
 // Update DOM
 function updateDOM(providedData = data) { // ES6 default value for parameter : if nothing passed, user data array
 
@@ -76,19 +89,14 @@ function formatMoney(number) {
 }
 
 // Event listeners
+
 addUserBtn.addEventListener('click', getRandomUser);
 
 doubleBtn.addEventListener('click', doubleMoney);
 
 sortBtn.addEventListener('click', sortByRichest);
 
-// console.log(data);
 showMillionairesBtn.addEventListener('click', showOnlyMillionaires);
 
-// Array.map tip
-// const array1 = [1, 4, 9, 16];
+calculateWealthBtn.addEventListener('click', calculateWealth);
 
-// const arr2 = array1.map(element =>  `Number: ${element}`);
-
-// })
-// console.log(arr2);
