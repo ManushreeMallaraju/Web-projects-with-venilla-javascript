@@ -63,7 +63,7 @@ function calculateWealth() {
         return acc = acc + current.money;
 
     }, 0)
-    console.log(formatMoney(wealth));
+
     const wealthElement = document.createElement('div');
     wealthElement.innerHTML = `<h3>Total Wealth: <strong>${formatMoney(wealth)}</strong></h3>`
     main.appendChild(wealthElement);
